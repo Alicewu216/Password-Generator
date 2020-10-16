@@ -14,7 +14,7 @@ function generatePassword() {
   var passStrCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var passStrLow = "abcdefghijklmnopqrstuvwxyz";
   var passStrNum = "0123456789";
-  var passStrSpc = " !\'#$%^&*()|？/,.<>+_:;@\[{\]}`~";
+  var passStrSpc = "!\'#$%^&*()|？/,.<>+_:;@\[{\]}`~";
   //place to store new password
   var newPass = "";
   var newArray =[];
@@ -24,12 +24,24 @@ function generatePassword() {
   var capConf = confirm("Do you want upper case letters in your password?");
   var lowConf = confirm("Do you want lower case letters in your password?");
   var numconf = confirm("Do you want numbers in your password?");
-  var specConf = confirm("Do you want special characters in your password?");
+  var spcConf = confirm("Do you want special characters in your password?");
   var passLength = prompt("Please enter a password length between 8 and 128");
   //position to put costomized characters
 
   if (capConf === true) {
     newArray.push(passStrCap);
+    requirmentCount++;
+  }
+  if (lowConf === true) {
+    newArray.push(passStrLow);
+    requirmentCount++;
+  }
+  if (numconf === true) {
+    newArray.push(passStrNum);
+    requirmentCount++;
+  }
+  if (spcConf === true) {
+    newArray.push(passStrSpc);
     requirmentCount++;
   }
   console.log(newArray);
