@@ -10,28 +10,43 @@ function writePassword() {
 
 }
 function generatePassword() {
+  //strings of possible characters
   var passStrCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var passStrLow = "abcdefghijklmnopqrstuvwxyz";
   var passStrNum = "0123456789";
-  var passStrSpc = [" ","!","'","#","$","%","&","\'","(",")","*","+","-",".","/",":",";","<",">","?","@","\[","\\","\]","^","_","`","{","|","}","~"];
+  var passStrSpc = " !\'#$%^&*()|？/,.<>+_:;@\[{\]}`~";
+  //place to store new password
   var newPass = "";
+  var newArray =[];
+  var requirmentCount = 0;
+  
+  //ask for customized requirment
   var capConf = confirm("Do you want upper case letters in your password?");
   var lowConf = confirm("Do you want lower case letters in your password?");
   var numconf = confirm("Do you want numbers in your password?");
   var specConf = confirm("Do you want special characters in your password?");
   var passLength = prompt("Please enter a password length between 8 and 128");
+  //position to put costomized characters
 
-  for (var i = 0; i < passLength; i++) {
-    var newChar = Math.floor(Math.random()*passStrLow.length)
-    newPass += passStrLow.charAt(newChar);
-    console.log(passLength);
-    console.log(newChar);
-    console.log(newPass);
+  if (capConf === true) {
+    newArray.push(passStrCap);
+    requirmentCount++;
   }
+  console.log(newArray);
+  console.log(requirmentCount);
+  for (var j = 0; j < requirmentCount; j++) {
+    for (var i = 0; i < passLength/requirmentCount; i++) {
+      var newLet = Math.floor(Math.random()*newArray[j].length);
+      newPass += newArray[j].charAt(newLet);
+      console.log(passLength);
+      console.log(newLet);
+      console.log(newPass);
+    }
+  }
+  
+  
+
   return newPass;
-
-
-
 }
 
 // Add event listener to generate button
