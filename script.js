@@ -14,7 +14,16 @@ var requirmentCount = 0;
 //place to store final output
 var finalStr = "";
 
-
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  if (password == null) {
+    password = "";
+  } else {
+    passwordText.value = password;
+  }
+}
 //generate password according to user demands
 function generatePassword() {
   //ask for customized requirment for character types and password length
@@ -108,17 +117,5 @@ function shuffle(a) {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  if (password == null) {
-    password = "";
-  } else {
-    passwordText.value = password;
-  }
-}
-
 
 
